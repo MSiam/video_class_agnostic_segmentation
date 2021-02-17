@@ -22,13 +22,13 @@ Preview of the 20 sequences annotated for moving and static cars and pedestrians
 * [sequence 14](https://youtu.be/Stjq2sgiu8I )
 * [sequence 15](https://youtu.be/Gh5YYdWv_ic )
 * [sequence 16](https://youtu.be/w9kpmHX8vNo )
-* [sequence 17]()
-* [sequence 18]()
-* [sequence 19]()
-* [sequence 20]()
+* [sequence 17](https://youtu.be/osjucd3pbNg )
+* [sequence 18](https://youtu.be/IN9vH29qu4U )
+* [sequence 19](https://youtu.be/koApyZS0dus )
+* [sequence 20](https://youtu.be/PJvTPKu9eGs )
 
 ## Cityscapes-VPS
 
 Preview of the 500 sequences with 6 frames per sequence annotated for moving and static objects
 
-[preview]()
+[preview](https://youtu.be/rTQ1OIqF6Dw)

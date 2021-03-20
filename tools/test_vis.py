@@ -25,10 +25,7 @@ def single_gpu_test(model, data_loader, args, cfg=None, verbose=True):
     dataset = data_loader.dataset
     class_num = 1000 # ins
     colors = [(np.random.random((1, 3)) * 255).tolist()[0] for i in range(class_num)]
-    if args.palette != '':
-        seg_color_map = get_color_map(args.palette)
-    else:
-        seg_color_map = get_color_map('cityscapes')
+    seg_color_map = get_color_map('cityscapes')
 
     for color in colors: # remove instance colors overlapping with segmentaiton colormap
         if color in list(seg_color_map.values()):
@@ -57,14 +54,10 @@ def single_gpu_test(model, data_loader, args, cfg=None, verbose=True):
 
         if verbose:
             mapping = {'KITTIMOTSTrackDataset':'kitti_mots', 'CityscapesVPSDataset':'cityscapesvps', 'MotionDataset': 'cityscapesvps'}
-            if args.palette == '':
-                dtype = mapping[cfg['dataset_type']]
-            else:
-                dtype = args.palette
-
+            dtype = mapping[cfg['dataset_type']]
             vis_seg(data, seg_result, cfg.img_norm_cfg, data_id=None, colors=colors,
                     score_thr=args.score_thr, save_dir=args.save_dir+fname,
-                    dataset_type=dtype, vis_track=args.vis_track, segmentation=True, seglabels_colors=seg_color_map,
+                    dataset_type=dtype, vis_track=False, segmentation=True, seglabels_colors=seg_color_map,
                     seglabels_ignore=seglabels_ignore, vis_unknown=args.vis_unknown)
 
         batch_size = data['img'][0].size(0)
@@ -77,11 +70,9 @@ def parse_args():
     parser = argparse.ArgumentParser(description='MMDet test detector')
     parser.add_argument('config', help='test config file path')
     parser.add_argument('checkpoint', help='checkpoint file')
-    parser.add_argument('--vis_track', action='store_true', help='Flag to visualize the tracks')
     parser.add_argument('--vis_unknown', action='store_true', help='Flag to visualize the tracks')
     parser.add_argument('--consistent', action='store_true', help='Flag to visualize the tracks')
     parser.add_argument('--score_thr', type=float, default=0.3, help='score threshold for visualization')
-    parser.add_argument('--palette', type=str, default='', help='color palette to use cityscapes/carla/idd')
     parser.add_argument('--save_dir', help='dir for saveing visualized images')
     args = parser.parse_args()
     return args

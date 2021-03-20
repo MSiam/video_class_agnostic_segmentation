@@ -5,8 +5,8 @@ We build our motion annotations on KITTI-MOTS[1] and Cityscapes-VPS[2].
 ## KITTI
 
 * Images: Download the original [KITTI-MOTS Dataset](http://www.cvlibs.net/datasets/kitti/eval_instance_seg.php?benchmark=instanceSeg2015).
-* Flow: Download Precomupted Flow []().
-* Annotations: Download motion annotations for KITTI.
+* Flow: Download Precomupted [Flow](https://drive.google.com/file/d/1tIyRKO5o9imAF3huUo0s-R-ys4znly5t/view?usp=sharing).
+* Annotations: Download [motion annotations](https://drive.google.com/file/d/1YT5aQ8WBloFoQg1gu8OYtwxW238tR1Qt/view?usp=sharing).
 * Construct Dataset Folder with Structure
 
     .
@@ -17,6 +17,10 @@ We build our motion annotations on KITTI-MOTS[1] and Cityscapes-VPS[2].
 
 ## Cityscapes
 * Download motion annotations for Cityscapes
+* Images: Download the original [Cityscapes-VPS](https://www.dropbox.com/s/ecem4kq0fdkver4/cityscapes-vps-dataset-1.0.zip?dl=0). Follow full instructions [here](https://github.com/mcahny/vps/blob/master/docs/DATASET.md).
+* Flow: Download Precomupted [Flow]().
+* Annotations: Download [motion annotations]().
+* Construct Dataset Folder with Structure
 
 # References
 

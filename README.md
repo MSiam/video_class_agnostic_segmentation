@@ -27,7 +27,7 @@ python setup.py develop
 
 # Inference
 
-* Download Trained Weights on Ego Flow Suppressed, trained on Cityscapes and KITTI-MOTS
+* Download [Trained Weights](https://drive.google.com/file/d/16qEH0WoFVt0n6Ooi6zl4ymWKZYv1YVJ8/view?usp=sharing) on Ego Flow Suppressed, trained on Cityscapes and KITTI-MOTS
 
 * Modify Configs according to dataset path + Image/Annotation/Flow prefix
 ```

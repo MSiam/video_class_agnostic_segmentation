@@ -8,7 +8,6 @@ from mmdet.core import multi_apply, bbox2roi, matrix_nms
 from ..builder import build_loss
 from ..registry import HEADS
 from ..utils import bias_init_with_prob, ConvModule
-from torch.utils.tensorboard import SummaryWriter
 import torchvision
 from PIL import Image
 import torchvision.transforms as Ftransforms
@@ -71,7 +70,6 @@ class DecoupledSOLOHead(nn.Module):
         self.norm_cfg = norm_cfg
         self._init_layers()
 
-        self.tensorboard_writer = SummaryWriter('./work_dirs/my_tensorboard/')
 
     def _init_layers(self):
         norm_cfg = dict(type='GN', num_groups=32, requires_grad=True)
@@ -227,13 +225,6 @@ class DecoupledSOLOHead(nn.Module):
             featmap_sizes=featmap_sizes)
 
         # ins
-        nsave = 4000
-        if save_tensorboard !=-1 and save_tensorboard%nsave==0:
-            img = Image.open(img_metas[0]['filename'])
-            self.tensorboard_writer.add_image('image', Ftransforms.ToTensor()(img), save_tensorboard)
-            grid_image = torchvision.utils.make_grid(torch.tensor(gt_mask_list[0]).unsqueeze(1))*255
-            self.tensorboard_writer.add_image('labels_before', grid_image, save_tensorboard)
-
         ins_labels = [torch.cat([ins_labels_level_img[ins_ind_labels_level_img, ...]
                                  for ins_labels_level_img, ins_ind_labels_level_img in
                                  zip(ins_labels_level, ins_ind_labels_level)], 0)
@@ -263,14 +254,6 @@ class DecoupledSOLOHead(nn.Module):
             input = (input_x.sigmoid())*(input_y.sigmoid())
             loss_ins.append(dice_loss(input, target))
 
-            if save_tensorboard !=-1 and save_tensorboard%nsave==0:
-                grid_labels_after = torchvision.utils.make_grid(target.unsqueeze(1))
-                self.tensorboard_writer.add_image('labels_after_%d'%level, grid_labels_after*255, save_tensorboard)
-
-                thresholded_input = torch.tensor(input > 0.5, dtype=torch.uint8)*255
-                grid_preds_after = torchvision.utils.make_grid(thresholded_input.unsqueeze(1))
-                self.tensorboard_writer.add_image('preds_%d'%level, grid_preds_after, save_tensorboard)
-
             level += 1
 
         if len(loss_ins) == 0:
@@ -279,21 +262,6 @@ class DecoupledSOLOHead(nn.Module):
         loss_ins = torch.cat(loss_ins).mean() * self.ins_loss_weight
 
         # cate
-        if save_tensorboard !=-1 and save_tensorboard%nsave==0:
-            colors = [torch.tensor((255,0,0), dtype=torch.uint8), torch.tensor((0,255,0), dtype=torch.uint8)]
-            for level, _ in enumerate(cate_label_list[0]):
-                mask = cate_label_list[0][level]
-                mask_color = torch.zeros((3, mask.shape[0], mask.shape[1]), dtype=torch.uint8)
-
-                pred_ = (cate_preds[level][0].sigmoid() > 0.5).int()
-                pred_color = torch.zeros((3, mask.shape[0], mask.shape[1]), dtype=torch.uint8)
-                for it in range(pred_.shape[0]):
-                    color = colors[it]
-                    mask_color[:, mask==it+1] = color.unsqueeze(1)
-                    pred_color[:, pred_[it]==1] = color.unsqueeze(1)
-                self.tensorboard_writer.add_image('cate_label_%d'%level, mask_color, save_tensorboard)
-                self.tensorboard_writer.add_image('cate_pred_%d'%level, pred_color, save_tensorboard)
-
         cate_labels = [
             torch.cat([cate_labels_level_img.flatten()
                        for cate_labels_level_img in cate_labels_level])

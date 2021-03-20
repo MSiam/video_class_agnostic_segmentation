@@ -14,24 +14,28 @@ python setup.py develop
 
 # Dataset Preparation
 
-## KITTI
+* Follow Dataset Preparation [Instructions]().
 
-* Images: Download the original [KITTI-MOTS Dataset](http://www.cvlibs.net/datasets/kitti/eval_instance_seg.php?benchmark=instanceSeg2015).
-* Flow: Download Precomupted Flow []().
-* Annotations: Download motion annotations for KITTI.
-* Construct Dataset Folder with Structure
+# Inference
 
-    .
-    ├── Images
-    ├── Flow
-    ├── Flow_Suppressed
-    └── Annotations
+* Modify Configs according to dataset path + Image/Annotation/Flow prefix
+```
+configs/data/kittimots_motion_supp.py
+configs/data/cscapesvps_motion_supp.py
+```
 
-## Cityscapes
-* Download motion annotations for Cityscapes
+* Evaluate CAQ, 
+```
+python tools/test_eval_uq.py configs/infer_kittimots.py work_dirs/ego_flow_suppression_kitti_city.pth
+```
+Note better CAQ than reported from paper on KITTIMOTS as the flow suppressed for training images was further masked to remove objects 
+that were moving but do not belong to Car or Pedestrian (unlabelled objects).
 
+* Qualitative Results
+```
+```
 
-## References
+# References
 
 * KITTI-MOTS
 * Cityscapes-VPS

@@ -1,6 +1,11 @@
 # Video Class Agnostic Segmentation
+[Paper]() [Project]() [Demo]()
+
 Official Datasets and Implementation from our Paper "Video Class Agnostic Segmentation in Autonomous Driving".
 
+<div align="center">
+<img src="https://github.com/MSiam/video_class_agnostic_segmentation/blob/main/images/VCA_Teaser.png" width="70%" height="70%"><br><br>
+</div>
 
 
 # Installation

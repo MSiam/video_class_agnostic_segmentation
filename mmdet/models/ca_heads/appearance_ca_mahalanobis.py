@@ -1,3 +1,7 @@
+"""
+Class Agnostic Head Mahalanobis Based Segmentation
+"""
+
 import torch.nn as nn
 import torch
 from mmcv.cnn import normal_init

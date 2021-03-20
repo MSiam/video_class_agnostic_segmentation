@@ -1,14 +1,16 @@
+"""
+Class Agnostic Head Abstract Class
+"""
+
 import torch.nn as nn
 import torch
 from mmcv.cnn import normal_init
 import torch.nn.functional as F
 
-from ..registry import HEADS
 from ..utils import ConvModule
 from ..utils import merge_fpn
 import random
 import numpy as np
-from mmdet.models.losses import SupConLoss
 
 class AppearanceBasedClassAgnosticAbstract(nn.Module):
     def __init__(self, clustering_type='dbscan', in_channels=256, interm_channels=256,

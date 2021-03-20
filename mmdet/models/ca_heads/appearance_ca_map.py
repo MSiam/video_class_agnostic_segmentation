@@ -1,3 +1,7 @@
+"""
+Masked Average Pooling Head for Feature Analysis
+"""
+
 import torch.nn as nn
 import torch
 from mmcv.cnn import normal_init

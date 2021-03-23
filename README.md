@@ -60,6 +60,8 @@ Dataset and Repository relied on these sources:
 * This Repository built upon [SOLO Code](https://github.com/WXinlong/SOLO)
 
 # Citation
+
+```
 @article{siam2021video,
       title={Video Class Agnostic Segmentation Benchmark for Autonomous Driving}, 
       author={Mennatullah Siam and Alex Kendall and Martin Jagersand},
@@ -68,6 +70,7 @@ Dataset and Repository relied on these sources:
       archivePrefix={arXiv},
       primaryClass={cs.CV}
 }
+```
 
 # Contact
 If you have any questions regarding the dataset or repository, please contact menna.seyam@gmail.com.

@@ -1,5 +1,5 @@
 # Video Class Agnostic Segmentation
-\[[Paper]()\] \[[Project]()\] \[[Demo](https://www.youtube.com/watch?v=c9hMFHdTs6M)\]
+\[[Paper](https://arxiv.org/pdf/2103.11015.pdf)\] \[[Project](https://msiam.github.io/vca/)\] \[[Demo](https://www.youtube.com/watch?v=c9hMFHdTs6M)\]
 
 Official Datasets and Implementation from our Paper "Video Class Agnostic Segmentation in Autonomous Driving".
 
@@ -41,8 +41,6 @@ python tools/test_eval_caq.py CONFIG_FILE WEIGHTS_FILE
 ```
 CONFIG_FILE: configs/infer_kittimots.py or configs/infer_cscapesvps.py
 
-Note better CAQ than reported from paper on KITTIMOTS as the flow suppressed for training images was further masked to remove objects 
-that were moving but do not belong to Car or Pedestrian (unlabelled objects).
 
 * Qualitative Results
 ```

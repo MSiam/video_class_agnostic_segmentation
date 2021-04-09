@@ -1,5 +1,5 @@
 # Video Class Agnostic Segmentation
-\[[Paper]()\] \[[Project]()\] \[[Demo](https://www.youtube.com/watch?v=c9hMFHdTs6M)\]
+\[[Paper](https://arxiv.org/pdf/2103.11015.pdf)\] \[[Project](https://msiam.github.io/vca/)\] \[[Demo](https://www.youtube.com/watch?v=c9hMFHdTs6M)\]
 
 Official Datasets and Implementation from our Paper "Video Class Agnostic Segmentation in Autonomous Driving".
 
@@ -42,8 +42,6 @@ python tools/test_eval_caq.py CONFIG_FILE WEIGHTS_FILE
 ```
 CONFIG_FILE: configs/infer_kittimots.py or configs/infer_cscapesvps.py
 
-Note better CAQ than reported from paper on KITTIMOTS as the flow suppressed for training images was further masked to remove objects 
-that were moving but do not belong to Car or Pedestrian (unlabelled objects).
 
 * Qualitative Results
 ```
@@ -67,6 +65,19 @@ Dataset and Repository relied on these sources:
 * Kim, Dahun, et al. "Video panoptic segmentation." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2020.
 * Wang, Xinlong, et al. "Solo: Segmenting objects by locations." European Conference on Computer Vision. Springer, Cham, 2020.
 * This Repository built upon [SOLO Code](https://github.com/WXinlong/SOLO)
+
+# Citation
+
+```
+@article{siam2021video,
+      title={Video Class Agnostic Segmentation Benchmark for Autonomous Driving}, 
+      author={Mennatullah Siam and Alex Kendall and Martin Jagersand},
+      year={2021},
+      eprint={2103.11015},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
 
 # Contact
 If you have any questions regarding the dataset or repository, please contact menna.seyam@gmail.com.

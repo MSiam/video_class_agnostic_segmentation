@@ -8,12 +8,13 @@ We build our motion annotations on KITTI-MOTS[1] and Cityscapes-VPS[2].
 * Flow: Download Precomupted [Flow](https://drive.google.com/file/d/1tIyRKO5o9imAF3huUo0s-R-ys4znly5t/view?usp=sharing).
 * Annotations: Download [motion annotations](https://drive.google.com/file/d/1YT5aQ8WBloFoQg1gu8OYtwxW238tR1Qt/view?usp=sharing).
 * Construct Dataset Folder with Structure
-
+```
     .
     +-- Images
     +-- Flow
     +-- Flow_Suppressed
     +-- Annotations
+```
 
 ## Cityscapes
 * Download motion annotations for Cityscapes
@@ -21,6 +22,7 @@ We build our motion annotations on KITTI-MOTS[1] and Cityscapes-VPS[2].
 * Flow: Download Precomupted [Flow](https://drive.google.com/file/d/1HE4WTIW7HvjpQPU2wZ-eD6CVxmlAwigb/view?usp=sharing).
 * Annotations: Download [motion annotations](https://drive.google.com/file/d/1tXnThgg6TIVfravqEicm3DKsYYEbFwRg/view?usp=sharing).
 * Construct Dataset Folder with Structure
+```
     .
     +-- train
     |   +-- images
@@ -31,6 +33,7 @@ We build our motion annotations on KITTI-MOTS[1] and Cityscapes-VPS[2].
     |   +-- flow
     |   +-- flow_suppressed
     +-- annotations
+```
 
 # References
 

@@ -48,9 +48,9 @@ CONFIG_FILE: configs/infer_kittimots.py or configs/infer_cscapesvps.py
 python tools/test_vis.py CONFIG_FILE WEIGHTS_FILE --vis_unknown --save_dir OUTS_DIR
 ```
 
-* Evaluate Image Panoptic Quality
+* Evaluate Image Panoptic Quality, Note: evaluated on 1024x2048 Images
 ```
-python tools/test_eval_ipq.py CONFIG_FILE WEIGHTS_FILE --out PKL_FILE
+python tools/test_eval_ipq.py configs/infer_cscapesvps_pq.py WEIGHTS_FILE --out PKL_FILE
 ```
 
 # Training

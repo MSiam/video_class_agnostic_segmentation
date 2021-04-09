@@ -47,21 +47,20 @@ def single_gpu_test(model, data_loader, show=False, score_thr=0.3, img_scale=Non
                     seg_result[batch_idx][key] = seg_result[batch_idx][key].cpu()
 
         if len(seg_result[0].keys()) > 3 and len(seg_result[0]['masks']) != 0:
-            segmentation = cv2.resize(np.array(seg_result[0]['segmentation'], np.uint8), img_scale, interpolation=cv2.INTER_NEAREST)
+            segmentation = cv2.resize(np.array(seg_result[0]['segmentation'], np.uint8), img_scale,
+                                      interpolation=cv2.INTER_NEAREST)
             output_panos['all_ssegs'].append(segmentation)
             segmentation = np.asarray(segmentation, dtype=np.uint8)
             valid_inds = seg_result[0]['scores'] > score_thr
             output_panos['all_panos'].append(compute_panoptic(seg_result[0]['masks'][valid_inds], segmentation))
             # get_unified_... has last_id_stuff = 10 so in order to get Car: 2 to be become 13 need to add + 1
-            if flip_annotations:
-                seg_result[0]['labels'] = correct_annotations(seg_result[0]['labels'])
             output_panos['all_pano_cls_inds'].append(seg_result[0]['labels'][valid_inds]+1)
             output_panos['all_pano_obj_ids'].append(None)
             output_panos['all_names'].append(fname.split('/')[-1])
         else:
-            print('Entered here ')
-            segmentation = np.zeros((1024, 2048), np.uint8)
-            segmentation = np.asarray(segmentation, dtype=np.uint8)
+            # Handling Empty Instance Masks
+            segmentation = cv2.resize(np.array(seg_result[0]['segmentation'], np.uint8), img_scale,
+                                      interpolation=cv2.INTER_NEAREST)
             output_panos['all_ssegs'].append(segmentation)
             output_panos['all_panos'].append(segmentation)
             output_panos['all_pano_cls_inds'].append([])
@@ -133,7 +132,12 @@ def main():
     # If .pkl and _pano.pkl results are saved already, load = True.
     model = MMDataParallel(model, device_ids=[gpus[0]])
     # args.show = False
-    img_scale = cfg['data']['test']['pipeline'][1]['img_scale'][0]
+
+
+    for element in cfg['data']['test']['pipeline']:
+        if element['type'] == 'MultiScaleFlipAug':
+            img_scale = element['img_scale']
+
     outputs_pano = single_gpu_test(model, data_loader, score_thr=args.score_thr,
                                    img_scale=img_scale,
                                    flip_annotations=args.flip_annotations)

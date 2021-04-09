@@ -6,12 +6,15 @@ import torch
 
 @HEADS.register_module
 class SimpleSegHead(nn.Module):
-    def __init__(self, num_classes, in_channels, seg_feats_channel, stacked_convs, original_image_size):
+    def __init__(self, num_classes, in_channels, seg_feats_channel, stacked_convs, original_image_size,
+                 merge_fpn=True):
+
         super().__init__()
         self.num_classes = num_classes
         self.original_image_size = original_image_size
         self.fcn = nn.ModuleList()
         self.stacked_convs = stacked_convs
+        self.merge_fpn = merge_fpn
 
         chn = in_channels
         for i in range(stacked_convs):
@@ -30,7 +33,7 @@ class SimpleSegHead(nn.Module):
         self.classifier = nn.Conv2d(chn, num_classes, 1)
 
     def forward(self, x):
-        x = merge_fpn(x)
+        x = merge_fpn(x, average=self.merge_fpn)
         for i in range(self.stacked_convs):
             x = self.fcn[i](x)
         intermediate_feats = x

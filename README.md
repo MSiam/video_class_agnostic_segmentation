@@ -14,6 +14,7 @@ This repo is tested under Python 3.6, PyTorch 1.4
 * Download Required Packages
 ```
 pip install -r requirements.txt
+pip install "git+https://github.com/cocodataset/panopticapi.git"
 ```
 
 * Setup mmdet
@@ -48,6 +49,12 @@ that were moving but do not belong to Car or Pedestrian (unlabelled objects).
 ```
 python tools/test_vis.py CONFIG_FILE WEIGHTS_FILE --vis_unknown --save_dir OUTS_DIR
 ```
+
+* Evaluate Image Panoptic Quality
+```
+python tools/test_eval_ipq.py CONFIG_FILE WEIGHTS_FILE --out PKL_FILE
+```
+
 # Training
 
 Coming Soon ...

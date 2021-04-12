@@ -110,6 +110,9 @@ class SingleStageInsDetector(BaseDetector):
         elif flow is not None:
             # Flow is used as input not to warp ref_img
             merged, appearance = self.backbone(img, flow)
+        else:
+            # In case inference through appearance stream with 2stream backbone
+            merged, appearance = self.backbone(img)
 
         if self.with_neck:
             if merged is not None:
@@ -215,8 +218,7 @@ class SingleStageInsDetector(BaseDetector):
                       gt_masks=None, gt_semantic_seg=None, gt_obj_ids=None,
                       gt_semantic_seg_Nx=None, ref_labels=None, ref_obj_ids=None,
                       flow=None,
-                      depth=None,
-                      save_tensorboard=False):
+                      depth=None):
         merged, appearance = self.extract_feat(img, flow, depth)
 
         x_ref = None
@@ -229,7 +231,7 @@ class SingleStageInsDetector(BaseDetector):
 
         losses = {}
         loss_inputs = {'gt_bbox_list': gt_bboxes, 'gt_label_list': gt_labels, 'gt_mask_list': gt_masks,
-                       'img_metas': img_metas, 'cfg': self.train_cfg, 'save_tensorboard': save_tensorboard,
+                       'img_metas': img_metas, 'cfg': self.train_cfg,
                        'gt_bboxes_ignore': gt_bboxes_ignore, 'gt_semantic_seg': None}
 
         # Note KITTIMOTSTrack loader doesnt separate to list and rather 1 tensor

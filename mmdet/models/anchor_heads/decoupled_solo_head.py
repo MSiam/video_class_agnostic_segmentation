@@ -212,7 +212,6 @@ class DecoupledSOLOHead(nn.Module):
              img_metas,
              cfg,
              gt_bboxes_ignore=None,
-             save_tensorboard=False,
              class_agnostic_embeddings=None,
              gt_semantic_seg=None):
         featmap_sizes = [featmap.size()[-2:] for featmap in

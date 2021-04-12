@@ -62,7 +62,6 @@ def parse_losses(losses):
 
     return loss, log_vars
 
-NITERATIONS = 0
 
 def batch_processor(model, data, train_mode):
     """Process a data batch.
@@ -80,9 +79,7 @@ def batch_processor(model, data, train_mode):
     Returns:
         dict: A dict containing losses and log vars.
     """
-    global NITERATIONS
-    losses = model(**data, save_tensorboard=-1)#NITERATIONS)
-    NITERATIONS += 1
+    losses = model(**data)
     loss, log_vars = parse_losses(losses)
 
     outputs = dict(

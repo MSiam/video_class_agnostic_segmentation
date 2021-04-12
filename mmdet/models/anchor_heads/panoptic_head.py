@@ -16,6 +16,17 @@ class SimpleSegHead(nn.Module):
         self.stacked_convs = stacked_convs
         self.merge_fpn = merge_fpn
 
+        if not self.merge_fpn:
+            # The features from FPN are conactenated need a conv layer to reduce channels
+            self.bottleneck_conv = ConvModule(
+                            in_channels*5,
+                            seg_feats_channel,
+                            1,
+                            stride=1,
+                            padding=1,
+                            norm_cfg=None,
+                            bias=True)
+
         chn = in_channels
         for i in range(stacked_convs):
             self.fcn.append(
@@ -32,8 +43,13 @@ class SimpleSegHead(nn.Module):
         self.upsample_conv = nn.Conv2d(chn, chn, 1)
         self.classifier = nn.Conv2d(chn, num_classes, 1)
 
+    def init_weights(self):
+        pass
+
     def forward(self, x):
         x = merge_fpn(x, average=self.merge_fpn)
+        if not self.merge_fpn:
+            x = self.bottleneck_conv(x)
         for i in range(self.stacked_convs):
             x = self.fcn[i](x)
         intermediate_feats = x

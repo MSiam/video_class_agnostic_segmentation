@@ -1,7 +1,7 @@
 # Video Class Agnostic Segmentation
-\[[Paper](https://arxiv.org/pdf/2103.11015.pdf)\] \[[Project](https://msiam.github.io/vca/)\] \[[Demo](https://www.youtube.com/watch?v=c9hMFHdTs6M)\]
+\[[Method Paper]()\] \[[Benchmark Paper](https://arxiv.org/pdf/2103.11015.pdf)\] \[[Project](https://msiam.github.io/vca/)\] \[[Demo](https://www.youtube.com/watch?v=c9hMFHdTs6M)\]
 
-Official Datasets and Implementation from our Paper "Video Class Agnostic Segmentation in Autonomous Driving" in Workshop on Autonomous Driving, CVPR 2021.
+Official Datasets and Implementation from our Paper "Video Class Agnostic Segmentation Benchmark in Autonomous Driving" in Workshop on Autonomous Driving, CVPR 2021.
 
 <div align="center">
 <img src="https://github.com/MSiam/video_class_agnostic_segmentation/blob/main/images/VCA_Teaser.png" width="70%" height="70%"><br><br>

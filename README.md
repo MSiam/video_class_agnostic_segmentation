@@ -22,11 +22,12 @@ pip install "git+https://github.com/cocodataset/panopticapi.git"
 python setup.py develop
 ```
 
-# Dataset Preparation
+# Motion Segmentation Track
+## Dataset Preparation
 
 * Follow Dataset Preparation [Instructions](https://github.com/MSiam/video_class_agnostic_segmentation/blob/main/Motion_Dataset_Download.md).
 
-# Inference
+## Inference
 
 * Download [Trained Weights](https://drive.google.com/file/d/16qEH0WoFVt0n6Ooi6zl4ymWKZYv1YVJ8/view?usp=sharing) on Ego Flow Suppressed, trained on Cityscapes and KITTI-MOTS
 
@@ -53,7 +54,7 @@ python tools/test_vis.py CONFIG_FILE WEIGHTS_FILE --vis_unknown --save_dir OUTS_
 python tools/test_eval_ipq.py configs/infer_cscapesvps_pq.py WEIGHTS_FILE --out PKL_FILE
 ```
 
-# Training
+## Training
 
 Coming Soon ...
 

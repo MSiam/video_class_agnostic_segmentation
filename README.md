@@ -58,6 +58,10 @@ python tools/test_eval_ipq.py configs/infer_cscapesvps_pq.py WEIGHTS_FILE --out 
 
 Coming Soon ...
 
+# Open-set Segmentation Track
+
+Coming soon ...
+
 # Acknowledgements
 
 Dataset and Repository relied on these sources:

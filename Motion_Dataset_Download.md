@@ -6,7 +6,7 @@ We build our motion annotations on KITTI-MOTS[1] and Cityscapes-VPS[2].
 
 * Images: Download the original [KITTI-MOTS Dataset](http://www.cvlibs.net/datasets/kitti/eval_instance_seg.php?benchmark=instanceSeg2015).
 * Flow: Download Precomupted [Flow](https://drive.google.com/file/d/1tIyRKO5o9imAF3huUo0s-R-ys4znly5t/view?usp=sharing).
-* Annotations: Download [motion annotations](https://drive.google.com/file/d/1YT5aQ8WBloFoQg1gu8OYtwxW238tR1Qt/view?usp=sharing).
+* Annotations: Download [motion annotations](https://drive.google.com/drive/folders/1whMm0NMzkz77jQRHkQeNNQsuAGEVekqk?usp=sharing).
 * Construct Dataset Folder with Structure
 ```
     .

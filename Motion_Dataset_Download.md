@@ -20,7 +20,7 @@ We build our motion annotations on KITTI-MOTS[1] and Cityscapes-VPS[2].
 * Download motion annotations for Cityscapes
 * Images: Download the original [Cityscapes-VPS](https://www.dropbox.com/s/ecem4kq0fdkver4/cityscapes-vps-dataset-1.0.zip?dl=0). Follow full instructions [here](https://github.com/mcahny/vps/blob/master/docs/DATASET.md).
 * Flow: Download Precomupted [Flow](https://drive.google.com/file/d/1HE4WTIW7HvjpQPU2wZ-eD6CVxmlAwigb/view?usp=sharing).
-* Annotations: Download [motion annotations](https://drive.google.com/file/d/1tXnThgg6TIVfravqEicm3DKsYYEbFwRg/view?usp=sharing).
+* Annotations: Download [motion annotations](https://drive.google.com/drive/folders/1whMm0NMzkz77jQRHkQeNNQsuAGEVekqk?usp=sharing).
 * Construct Dataset Folder with Structure
 ```
     .

@@ -26,7 +26,8 @@ python setup.py develop
 ## Dataset Preparation
 
 * Follow Dataset Preparation [Instructions](https://github.com/MSiam/video_class_agnostic_segmentation/blob/main/Motion_Dataset_Download.md).
-
+* Low resolution view of the [full dataset](https://www.youtube.com/playlist?list=PL4jKsHbreeuBhEmzcL94JxWzVear79r5z)
+  
 ## Inference
 
 * Download [Trained Weights](https://drive.google.com/file/d/16qEH0WoFVt0n6Ooi6zl4ymWKZYv1YVJ8/view?usp=sharing) on Ego Flow Suppressed, trained on Cityscapes and KITTI-MOTS
